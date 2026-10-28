@@ -10,8 +10,8 @@ ROOT = Path(__file__).resolve().parents[0]
 DATA = ROOT/"data"
 
 # Load your ChEMBL dataset
-chembl_df = pd.read_csv(DATA / "filename.csv")  # use your actual filename and path
-smiles_list = chembl_df["smiles"].dropna().tolist() # use the column tag with the "smiles"
+chembl_df = pd.read_csv(DATA / "data_CHEMBL_cleaned.csv")  # use your actual filename and path
+smiles_list = chembl_df["Smiles"].dropna().tolist() # use the column tag with the "smiles"
 
 records = []
 
@@ -23,7 +23,7 @@ for smi in tqdm(smiles_list):  # limit to 200 compounds for testing, tqdm just a
         
         c = compounds[0]
         records.append({
-            "smiles": smi, # make sure that the column name for the smiles code matches the chembl dataframe!
+            "Smiles": smi, # make sure that the column name for the smiles code matches the chembl dataframe!
             "CID": c.cid,
             "MolecularWeight": c.molecular_weight,
             "XLogP": c.xlogp,
