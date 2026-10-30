@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[0]
 DATA = ROOT/"data"
 
 # Load your ChEMBL dataset
-chembl_df = pd.read_csv(DATA / "data_CHEMBL_cleaned.csv")  # use your actual filename and path
+chembl_df = pd.read_csv("D:/Studium/UZH/BCH/DSA103/ChemicalDataScience103/assignments/session12_assignment/dataCHEMBL_cleaned.csv")  # use your actual filename and path
 smiles_list = chembl_df["Smiles"].dropna().tolist() # use the column tag with the "smiles"
 
 records = []
@@ -41,5 +41,5 @@ for smi in tqdm(smiles_list):  # limit to 200 compounds for testing, tqdm just a
         print(f"Failed for {smi[:20]}...: {e}")
 
 pubchem_df = pd.DataFrame(records)
-pubchem_df.to_csv(r"[path]\antibio_pubchem_descr.csv", index=False) # use your path and specified filename
+pubchem_df.to_csv("D:/Studium/UZH/BCH/DSA103/ChemicalDataScience103/assignments/session12_assignment/antibio_pubchem_descr.csv", index=False) # use your path and specified filename
 print(f"Saved {len(pubchem_df)} entries.")
